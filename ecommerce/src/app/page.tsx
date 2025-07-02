@@ -5,6 +5,7 @@ import FilterSortBar from "@/components/FilterSidebar";
 import { fetchProducts } from "@/lib/api";
 import { useState , useEffect } from "react";
 
+
 export default function Home() {
   const[products , setProducts] = useState([])
   const[filtered , setFiltered] = useState([])
@@ -20,12 +21,12 @@ export default function Home() {
   }, [])
 
   const handleFilterChange = (category: string)=>{
-    const filteredProducts = category? products.filter((p:any) => p.category === category) : products;
+    const filteredProducts = category? products.filter((p:ProductProps) => p.category === category) : products;
     setFiltered(filteredProducts)
   };
 
   const handleSortChange = (order: "asc" | "desc") => {
-    const sortedProducts = [...filtered].sort((a: any , b: any) =>{
+    const sortedProducts = [...filtered].sort((a: ProductProps , b: ProductProps) =>{
       return order === "asc" ? a.price - b.price : b.price - a.price 
     })
     setFiltered(sortedProducts)
