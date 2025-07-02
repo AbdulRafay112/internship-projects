@@ -1,6 +1,6 @@
 
 export async function fetchProducts(){
-    const res = await fetch("http://localhost:3001/products",{
+    const res = await fetch("/api/products",{
         next:{revalidate:5}
     })
     if(!res.ok)
