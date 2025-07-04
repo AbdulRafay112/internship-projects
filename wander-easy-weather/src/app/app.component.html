@@ -1,0 +1,19 @@
+<div class="container py-5">
+  <h2 class="text-center mb-4">🌤️ WanderEasy Weather Forecast</h2>
+
+  <div class="mb-3">
+    <input [(ngModel)]="city" class="form-control" placeholder="Enter city name" />
+  </div>
+
+  <div class="text-center">
+    <button (click)="getWeather()" class="btn btn-primary">Get Forecast</button>
+  </div>
+
+  <div class="mt-4" *ngIf="weatherData">
+    <h4>5-Day Forecast for {{ city }}</h4>
+    <div *ngFor="let day of weatherData.list" class="border p-2 my-2 rounded bg-light">
+      <p><strong>{{ day.dt_txt }}</strong></p>
+      <p>🌡️ Temp: {{ day.main.temp }}°C | ☁️ {{ day.weather[0].description }}</p>
+    </div>
+  </div>
+</div>
